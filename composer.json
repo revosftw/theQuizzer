@@ -48,6 +48,12 @@
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover"
+        ],
+        "post-install-cmd":[
+            "@php --run link(vendor/twbs/bootstrap/dist, public/vendor/bootstrap)"
+        ],
+        "post-update-cmd":[
+            "@php --run link(vendor/twbs/bootstrap/dist, public/vendor/bootstrap)"
         ]
     },
     "config": {
