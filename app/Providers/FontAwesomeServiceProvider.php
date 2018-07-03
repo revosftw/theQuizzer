@@ -14,6 +14,7 @@ class FontAwesomeServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        $this->publishes([base_path('vendor/fortawesome/font-awesome') => public_path('vendor/font-awesome')],'public');
     }
 
     /**
