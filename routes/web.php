@@ -38,6 +38,4 @@ Route::get('/phpinfo',function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@home')->name('home');
-Route::get('/users', function(){
-    return view('users/dashboard');
-});
+Route::get('/users', 'UserController@showAllUsers');

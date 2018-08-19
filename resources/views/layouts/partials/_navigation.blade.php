@@ -17,7 +17,7 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="{{ url('labs') }}" id="labs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ __('QuesLab') }}</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                <div class="dropdown-menu" aria-labelledby="dropdown">
                     <a class="dropdown-item" href="#">{{ __('Question Bank') }}</a>
                     <a class="dropdown-item" href="#">{{ __('Test Lab') }}</a>
                     <a class="dropdown-item" href="#">Something else here</a>
@@ -33,7 +33,11 @@
         <ul class="navbar-nav mr-right">
             <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    @auth
                     {{ Auth::user()->name }} <span class="badge badge-pill bg align-text-bottom">27</span><span class="caret"></span>
+                    @else
+                    Guest <span class="badge badge-pill bg align-text-bottom">27</span><span class="caret"></span>
+                    @endauth
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
