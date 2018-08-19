@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -13,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -21,13 +22,15 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('welcome');
+    public function index(){
+      if(Auth::check()){
+        return view('home');
+      }
+      return view('welcome');
     }
 
-    public function home()
-    {
+    public function home(){
+        $this->middleware('auth');
         return view('home');
     }
 }
