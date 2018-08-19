@@ -9,8 +9,8 @@
 
     <div id="navbar" class="navbar-collapse collapse">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item {{ Request::is('home') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ url('home') }}">{{ __('Dashboard') }}</a>
+            <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ url('/') }}">{{ __('Dashboard') }}</a>
             </li>
             <li class="nav-item {{ Request::is('users') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('users') }}">{{ __('Users') }}</a>
