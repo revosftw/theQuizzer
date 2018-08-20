@@ -43,12 +43,8 @@ class HomeController extends Controller
     $this->middleware('auth');
 
     // Declare the dashboard variables
-    // $countUsers = User::all()->count();
-    // $countActiveUser = User::whereHas('active', true)->count();
-    // $countStudent = User::whereHas('roles', function($query){$query->where('name', 'student');})->count();
-    // $countTeacher = User::whereHas('roles', function($query){$query->where('name', 'teacher');})->count();
-    // $countAdministrator = User::whereHas('roles', function($query){$query->where('name', 'administrator');})->count();
 
+    // User Summary
     $countUsers = User::all()->count();
     $countActiveUser = User::where('active', true)->count();
     $countStudent = User::whereHas('roles', function($query){$query->where('name', 'student');})->where('active', true)->count();
