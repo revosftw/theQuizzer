@@ -4,10 +4,10 @@
   <h1 class="h2">Users</h1>
   <div class="btn-toolbar mb-2 mb-md-0">
     <div class="btn-group mr-2">
-      <button class="btn btn-sm btn-outline-secondary" type="submit" onclick="location.href = '/register';"> <i class="fas fa-plus-square"></i> </button>
-      <button class="btn btn-sm btn-outline-secondary" type="submit" onclick="location.href = '/user/toggleStatus';"> <i class="fas fa-sync-alt"></i> </button>
-			<button class="btn btn-sm btn-outline-secondary" type="submit" onclick="location.href = '/user/toggleStatus?active';"> <i class="fas fa-unlock"></i> </button>
-      <button class="btn btn-sm btn-outline-secondary" type="submit" onclick="location.href = '/user/resetPasswords';"> <i class="fas fa-key"></i> </button>
+      <button class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="add a new user" type="submit" onclick="location.href = '/register';"> <i class="fas fa-plus"></i> </button>
+      <button class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="toggle activation status" type="submit" onclick="location.href = '/user/toggleStatus';"> <i class="fas fa-sync-alt"></i> </button>
+			<button class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="activate selected users" type="submit" onclick="location.href = '/user/toggleStatus?active';"> <i class="fas fa-unlock"></i> </button>
+      <button class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="reset password automatically" type="submit" onclick="location.href = '/user/resetPasswords';"> <i class="fas fa-key"></i> </button>
     </div>
   </div>
 </div>
@@ -20,7 +20,7 @@
 				<th>Email</th>
 				<th>Status</th>
 				<th>Role</th>
-				<th>Edit</th>
+				<th>Actions</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -31,7 +31,12 @@
 				<td>{{ $user->email }}</td>
 				<td>@if($user->active) Enabled @else Disabled @endif</td>
 				<td>{{ $user->roles->first()->name }}</td>
-				<td><a href="/user/{{$user->id}}"><i class="fas fa-user-edit"></a></i></td>
+				<td>
+          <a class="" href="/user/{{$user->id}}"><i class="fas fa-user-edit"></a></i>
+          <a class="" href="/user/{{$user->id}}"><i class="fas fa-sync-alt"></a></i>
+          <a class="" href="/user/{{$user->id}}"><i class="fas fa-unlock"></a></i>
+          <a class="" href="/user/{{$user->id}}"><i class="fas fa-key"></a></i>
+        </td>
 			</tr>
 			@endforeach
 		</tbody>
