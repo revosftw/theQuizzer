@@ -31,7 +31,7 @@ class UserController extends Controller
         return view('users.index',compact('users'));
     }
 
-/**
+    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
@@ -39,5 +39,5 @@ class UserController extends Controller
     public function editUser(){
     	$users = DB::table('users')->get();
     	return view('users.index',['users' => $users]);
-    }    
+    }
 }

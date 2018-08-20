@@ -1,6 +1,15 @@
 @extends('layouts.master')
 
 @section('content')
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+  <h1 class="h2">{{ __('Users') }}</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group mr-2">
+      <button class="btn btn-sm btn-outline-secondary">{{ __('Mass Create') }}</button>
+      <button class="btn btn-sm btn-outline-secondary">{{ __('Clear Form') }}</button>
+    </div>
+  </div>
+</div>
 <div class="mt-2 mr-auto">
   <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
     @csrf
@@ -52,6 +61,18 @@
 
         <div class="col-md-6">
             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
+
+        <div class="col-md-6">
+            <select class="form-control" id="role" required>
+              <option>student</option>
+              <option>teacher</option>
+              <option>administrator</option>
+            </select>
         </div>
     </div>
 
