@@ -41,3 +41,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@home')->name('home');
 Route::get('/users', 'UserController@showAllUsers');
+Route::get('/questions',function(){
+  return view('questions.index',compact('questions'));
+});
