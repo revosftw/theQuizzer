@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class questions extends Model
+class question extends Model
 {
    /**
     * Return the relationship between question and options.
