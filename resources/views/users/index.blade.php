@@ -30,12 +30,12 @@
 				<td>{{ $user->name }}</td>
 				<td>{{ $user->email }}</td>
 				<td>@if($user->active) Enabled @else Disabled @endif</td>
-				<td>{{ $user->roles->first()->name }}</td>
+				<td>{{ $user->roles->first()->name or "" }}</td>
 				<td>
-          <a class="" href="/user/{{$user->id}}"><i class="fas fa-user-edit"></a></i>
-          <a class="" href="/user/{{$user->id}}"><i class="fas fa-sync-alt"></a></i>
-          <a class="" href="/user/{{$user->id}}"><i class="fas fa-unlock"></a></i>
-          <a class="" href="/user/{{$user->id}}"><i class="fas fa-key"></a></i>
+          <a class="" href="{{ route('users.edit',$user->id) }}"><i class="fas fa-user-edit"></a></i>
+          <a class="" href="{{ route('users.activate',$user->id) }}"><i class="fas fa-sync-alt"></a></i>
+          <a class="" href="{{ route('users.reset',$user->id) }}"><i class="fas fa-unlock"></a></i>
+          <a class="" href="{{ route('users.reset',$user->id) }}"><i class="fas fa-key"></a></i>
         </td>
 			</tr>
 			@endforeach

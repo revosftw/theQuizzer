@@ -13,7 +13,7 @@
                 <a class="nav-link" href="{{ url('/') }}">{{ __('Dashboard') }}</a>
             </li>
             <li class="nav-item {{ Request::is('users') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ url('users') }}">{{ __('Users') }}</a>
+                <a class="nav-link" href="{{ route('users') }}">{{ __('Users') }}</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="{{ url('labs') }}" id="labs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ __('QuesLab') }}</a>
@@ -41,7 +41,7 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ url('profile') }}">{{ __('Profile') }}</a>
+                    <a class="dropdown-item" href="{{ url('') }}">{{ __('Profile') }}</a>
                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"> {{ __('Logout') }}</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"> @csrf </form>
                 </div>
