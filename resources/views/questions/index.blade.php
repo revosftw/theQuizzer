@@ -16,10 +16,10 @@
 		<thead>
 			<tr>
 				<th><div class="form-check-inline mr-auto"><label class="form-check-label"><input class="form-check-input" value="" type="checkbox"></label></div></th>
-				<th>Name</th>
-				<th>Email</th>
-				<th>Status</th>
-				<th>Role</th>
+				<th>ID</th>
+				<th>Question</th>
+				<th>Answer</th>
+				<!-- <th>Role</th> -->
 				<th>Actions</th>
 			</tr>
 		</thead>
