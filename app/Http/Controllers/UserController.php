@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Request;
 use Illuminate\Support\Facades\DB;
 
 use App\User;
@@ -52,18 +52,19 @@ class UserController extends Controller
   */
   public function update($id){
     $user = User::find($id);
+    //d($user);
+    // $this->validate(request(), [
+    //   'name' => 'required',
+    //   'email' => 'sometimes|required|email|unique:users',
+    //   'password' => 'required|min:6|confirmed'
+    // ]);
 
-    $this->validate(request(), [
-      'name' => 'required',
-      'email' => 'required|email|unique:users',
-      'password' => 'required|min:6|confirmed'
-    ]);
-
-    $user->name = Input::get('name');
-    $user->email = Input::get('email');
-    $user->password = bcrypt(Input::get('password'));
-    $user->save();
-    return Redirect::to(route('users'));
+    $user->name = Request::input('name');
+    //$user->email = Request::input('email');
+    $user->password = bcrypt(Request::input('password'));
+    $user->update();
+    // Flash::message('Your account has been updated!');
+    return redirect()->route('users')->with('success_msg','Your account has been updated!');
   }
 
   /**

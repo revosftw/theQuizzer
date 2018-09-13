@@ -42,10 +42,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@home')->name('home');
 
 Route::get('/users', 'UserController@show')->name('users');
-Route::get('/users/{userID}', ['as' => 'users.edit', 'uses' => 'UserController@edit']);
-Route::patch('/users/{userID}/update', ['as' => 'users.update', 'uses' => 'UserController@update']);
-Route::get('/users/{userID}/reset', ['as' => 'users.reset', 'uses' => 'UserController@resetPassword']);
-Route::get('/users/{userID}/activate', ['as' => 'users.activate', 'uses' => 'UserController@activate']);
+Route::get('/users/{user}', ['as' => 'users.edit', 'uses' => 'UserController@edit']);
+Route::match(['post','patch','put'],'/users/{user}/update', ['as' => 'users.update', 'uses' => 'UserController@update']);
+Route::get('/users/{user}/reset', ['as' => 'users.reset', 'uses' => 'UserController@resetPassword']);
+Route::get('/users/{user}/activate', ['as' => 'users.activate', 'uses' => 'UserController@activate']);
 
 Route::get('/questions', 'QuestionController@index')->name('questions');
 
