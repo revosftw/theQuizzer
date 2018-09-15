@@ -52,15 +52,17 @@ class UserController extends Controller
   */
   public function update($id){
     $user = User::find($id);
-    //d($user);
-    // $this->validate(request(), [
-    //   'name' => 'required',
-    //   'email' => 'sometimes|required|email|unique:users',
-    //   'password' => 'required|min:6|confirmed'
-    // ]);
+    // print_r($user->email);
+    // die();
+    // dd($user);
+    $this->validate(request(), [
+      'name' => 'required',
+      'email' => 'required|email|unique:users,email,'.$id,
+      'password' => 'required|min:6|confirmed'
+    ]);
 
     $user->name = Request::input('name');
-    //$user->email = Request::input('email');
+    $user->email = Request::input('email');
     $user->password = bcrypt(Request::input('password'));
     $user->update();
     // Flash::message('Your account has been updated!');
