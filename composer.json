@@ -10,7 +10,7 @@
         "fortawesome/font-awesome": "^4.7",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
-        "twbs/bootstrap": "^4.1"
+        "twbs/bootstrap": "^4.0"
     },
     "require-dev": {
         "filp/whoops": "^2.0",
