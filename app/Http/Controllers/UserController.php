@@ -39,7 +39,7 @@ class UserController extends Controller
   * @return \Illuminate\Http\Response
   */
   public function edit($id){
-    $user = User::find($id);
+    $user = User::findOrFail($id);
     //$user =  Auth::user();
     return view('users.edit',compact('user'));
   }
@@ -51,7 +51,7 @@ class UserController extends Controller
   * @return Response
   */
   public function update($id){
-    $user = User::find($id);
+    $user = User::findOrFail($id);
     // print_r($user->email);
     // die();
     // dd($user);
@@ -76,7 +76,7 @@ class UserController extends Controller
   * @return Response
   */
   public function activate($id){
-    $user = User::find($id);
+    $user = User::findOrFail($id);
     if($user->active == true){
       $user->active = false;
     }
@@ -94,7 +94,7 @@ class UserController extends Controller
   * @return Response
   */
   public function resetPassword($id){
-    $user = User::find($id);
+    $user = User::findOrFail($id);
     $user->password = bcrypt('batman');
     $user->save();
     return redirect()->route('users');
