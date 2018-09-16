@@ -30,13 +30,31 @@ class QuestionController extends Controller
   }
 
   /**
+   * Update the specified question in storage.
+   *
+   * @param int $id
+   * @return Response
+   */
+  public function create(){
+    $question = new question();
+
+    $this->validate(request(), [
+      'text' => 'required'
+    ]);
+
+    $question->text = Input::get('text');
+    $question->save();
+    return Redirect::to()->route('questions');
+  }
+
+  /**
    * Show the form for editing the specified question.
    *
    * @param int $id
    * @return \Illuminate\Http\Response
    */
   public function edit($id){
-    $question = question::find($id);
+    $question = question::findOrFail($id);
     return view('questions.index',['questions' => $questions]);
   }
 
@@ -47,7 +65,7 @@ class QuestionController extends Controller
    * @return Response
    */
   public function update($id){
-    $question = question::find($id);
+    $question = question::findOrFail($id);
 
     $this->validate(request(), [
       'text' => 'required'
