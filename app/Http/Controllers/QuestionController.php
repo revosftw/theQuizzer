@@ -25,7 +25,7 @@ class QuestionController extends Controller
    * @return view
    */
   public function index(){
-      $questions = question::all();
+      $questions = Question::all();
       return view('questions.index',compact('questions'));
   }
 
@@ -54,8 +54,8 @@ class QuestionController extends Controller
    * @return \Illuminate\Http\Response
    */
   public function edit($id){
-    $question = question::findOrFail($id);
-    return view('questions.index',['questions' => $questions]);
+    $question = Question::findOrFail($id);
+    return view('questions.index',compact('question'));
   }
 
   /**
@@ -65,7 +65,7 @@ class QuestionController extends Controller
    * @return Response
    */
   public function update($id){
-    $question = question::findOrFail($id);
+    $question = Question::findOrFail($id);
 
     $this->validate(request(), [
       'text' => 'required'
@@ -75,4 +75,21 @@ class QuestionController extends Controller
     $question->save();
     return Redirect::to()->route('questions');
   }
+
+  /**
+   * Update the specified question in storage.
+   *
+   * @param int $id
+   * @return Response
+   */
+   public function toggle($id){
+     $question = Question::findOrFail($id);
+     if($question->mock==false){
+       $question->mock = true;
+     }
+     else{
+        $question->mock=false;
+      }
+      return Redirect::back();
+   }
 }
