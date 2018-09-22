@@ -26,7 +26,7 @@
 		<tbody>
 			@foreach($questions as $question)
 			<tr>
-				<td><div class="form-check-inline mr-auto"><label class="form-check-label"><input class="form-check-input" value="" type="checkbox" id="{{ $user->id }}"></label></div></td>
+				<td><div class="form-check-inline mr-auto"><label class="form-check-label"><input class="form-check-input" value="" type="checkbox" id="{{ $question->id }}"></label></div></td>
         <td>{{ $question->id }}</td>
         <td>{{ $question->text }}</td>
 				<td>{{ $question->answer }}</td>
