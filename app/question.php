@@ -4,23 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class question extends Model
+class Question extends Model
 {
    /**
     * Return the relationship between question and options.
     *
-    * @return options
+    * @return Option
     */
     public function options(){
-      return $this->hasMany(option::class);
+      return $this->hasMany(Option::class);
     }
-
-    /**
-     * Return the relationship between question and actions.
-     *
-     * @return answer
-     */
-     public function answers(){
-       return $this->hasMany(answer::class);
-     }
 }

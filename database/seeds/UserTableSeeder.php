@@ -14,7 +14,8 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         // Clear table data
-        DB::table('users')->delete();
+        //DB::table('users')->delete();
+        User::query()->delete();
 
         // Get Roles from Role Table
         $roleStudent = Role::where('name', 'student')->first();
@@ -29,7 +30,7 @@ class UserTableSeeder extends Seeder
         $administrator->active = true;
         $administrator->save();
         $administrator->roles()->attach($roleAdministrator);
-        
+
         // Create teacher user
         $teacher = new User();
         $teacher->name = 'Bruce Wayne';

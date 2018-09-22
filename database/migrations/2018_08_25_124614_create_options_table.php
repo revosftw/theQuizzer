@@ -14,8 +14,16 @@ class CreateOptionsTable extends Migration
     public function up()
     {
         Schema::create('options', function (Blueprint $table) {
+          /**
+           *
+           * Foreign Key for Question
+           *
+           */
+            $table->integer('question_id')->unsigned();
+
             $table->increments('id');
             $table->string('text');
+            $table->boolean('isAnswer')->deafult(false);
             $table->timestamps();
         });
     }

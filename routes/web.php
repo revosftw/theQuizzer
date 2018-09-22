@@ -48,5 +48,8 @@ Route::get('/users/{user}/reset', ['as' => 'users.reset', 'uses' => 'UserControl
 Route::get('/users/{user}/activate', ['as' => 'users.activate', 'uses' => 'UserController@activate']);
 
 Route::get('/questions', 'QuestionController@index')->name('questions');
+Route::get('/questions/{question}', 'QuestionController@edit')->name('questions.edit');
+Route::match(['post','patch','put'],'/questions/{question}/update', ['as' => 'questions.update', 'uses' => 'QuestionController@update']);
+Route::get('/questions/{question}/toggle', ['as' => 'questions.toggle', 'uses' => 'QuestionController@toggle']);
 
 Route::get('/quiz', 'QuizController@index')->name('quizzes');
