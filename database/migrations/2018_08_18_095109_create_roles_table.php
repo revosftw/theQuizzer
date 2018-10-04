@@ -17,8 +17,12 @@ class CreateRolesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('description');
-            $table->integer('function_id')->unsigned()->nullable();
+            //$table->integer('function_id')->unsigned()->nullable();
+
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->index(['deleted_at']);
         });
     }
 

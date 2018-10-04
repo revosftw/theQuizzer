@@ -30,6 +30,9 @@ class DatabaseSeeder extends Seeder
           $user->roles()->attach(App\Role::where('name', 'student')->first());
         });
 
+        // Seed the topic table
+        $this->call(TopicTableSeeder::class);
+
         // Seed the questions table
         $this->call(QuestionTableSeeder::class);
     }

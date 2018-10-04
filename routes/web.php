@@ -47,9 +47,17 @@ Route::match(['post','patch','put'],'/users/{user}/update', ['as' => 'users.upda
 Route::get('/users/{user}/reset', ['as' => 'users.reset', 'uses' => 'UserController@resetPassword']);
 Route::get('/users/{user}/activate', ['as' => 'users.activate', 'uses' => 'UserController@activate']);
 
-Route::get('/questions', 'QuestionController@index')->name('questions');
-Route::get('/questions/{question}', 'QuestionController@edit')->name('questions.edit');
-Route::match(['post','patch','put'],'/questions/{question}/update', ['as' => 'questions.update', 'uses' => 'QuestionController@update']);
-Route::get('/questions/{question}/toggle', ['as' => 'questions.toggle', 'uses' => 'QuestionController@toggle']);
+// Route::get('/questions', 'QuestionController@index')->name('questions');
+// Route::get('/questions/{question}', 'QuestionController@edit')->name('questions.edit');
+// Route::match(['post','patch','put'],'/questions/{question}/update', ['as' => 'questions.update', 'uses' => 'QuestionController@update']);
+// Route::get('/questions/{question}/toggle', ['as' => 'questions.toggle', 'uses' => 'QuestionController@toggle']);
+// Route::get('/questions/new', 'QuestionController@showQuestionForm');
 
-Route::get('/quiz', 'QuizController@index')->name('quizzes');
+Route::match(['put','patch'], '/questions/{question}/toggle', 'QuestionController@toggle')->name('questions.toggle');
+Route::resource('questions', 'QuestionController');
+
+Route::resource('topics', 'TopicController');
+
+Route::resource('exams', 'ExamController');
+
+Route::resource('reports', 'ReportController');

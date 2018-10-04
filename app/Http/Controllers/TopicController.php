@@ -15,6 +15,8 @@ class TopicController extends Controller
     public function index()
     {
         //
+        $topics = Topic::all();
+        return view('topics.index',compact('topics'));
     }
 
     /**
@@ -25,6 +27,7 @@ class TopicController extends Controller
     public function create()
     {
         //
+        return view('topics.create');
     }
 
     /**
@@ -36,6 +39,17 @@ class TopicController extends Controller
     public function store(Request $request)
     {
         //
+        $requestValidated = $request->validate([
+            'name' => 'required|unique:topics',
+        ]);
+
+        $topic = new Topic();
+
+        $topic->name = $request->name;
+        $topic->description = $request->description;
+
+        $topic->save();
+        return redirect()->route('topics.index');
     }
 
     /**
@@ -47,6 +61,12 @@ class TopicController extends Controller
     public function show(Topic $topic)
     {
         //
+        $relations = [
+        ];
+
+        $topic = Topic::findOrFail($topic->id);
+
+        return view('topics.show', compact('topic') + $relations);
     }
 
     /**
@@ -57,7 +77,14 @@ class TopicController extends Controller
      */
     public function edit(Topic $topic)
     {
+        // dd($topic);
         //
+        $relations = [
+        ];
+
+        $topic = Topic::findOrFail($topic->id);
+
+        return view('topics.edit', compact('topic') + $relations);
     }
 
     /**
@@ -70,6 +97,9 @@ class TopicController extends Controller
     public function update(Request $request, Topic $topic)
     {
         //
+        $updateTopic = Topic::findOrFail($topic->id);
+        $updateTopic->update($request->all());
+        return redirect()->route('topics.index');
     }
 
     /**
@@ -81,5 +111,9 @@ class TopicController extends Controller
     public function destroy(Topic $topic)
     {
         //
+        // dd($topic);
+        Topic::findOrFail($topic->id)->delete();
+
+        return redirect('topics')->with('success', 'Information has been removed');
     }
 }

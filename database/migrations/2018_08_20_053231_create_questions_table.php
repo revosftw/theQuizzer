@@ -15,10 +15,16 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('text');
-            $table->boolean('mock')->default(false);
-            $table->string('category')->default('');
+            $table->integer('topic_id')->unsigned()->nullable();
+
+            $table->string('question_text');
+            $table->string('answer_explanation')->nullable();
+            $table->boolean('for_mock')->default(false);
+
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->index(['deleted_at']);
         });
     }
 

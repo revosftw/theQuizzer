@@ -6,6 +6,8 @@ use Request;
 use Illuminate\Support\Facades\DB;
 
 use App\User;
+use App\Role;
+
 use Auth;
 
 class UserController extends Controller

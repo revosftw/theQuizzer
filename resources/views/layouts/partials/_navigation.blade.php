@@ -18,16 +18,16 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="{{ url('labs') }}" id="labs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ __('QuesLab') }}</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown">
-                    <a class="dropdown-item" href="#">{{ __('Question Bank') }}</a>
-                    <a class="dropdown-item" href="#">{{ __('Test Lab') }}</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="{{ route('questions.index') }}">{{ __('Question Bank') }}</a>
+                    <a class="dropdown-item" href="{{ route('topics.index') }}">{{ __('Categories') }}</a>
+                    <!-- <a class="dropdown-item" href="{{ route('exams.index') }}">{{ __('Exam Bank') }}</a> -->
                 </div>
             </li>
             <li class="nav-item {{ Request::is('reports') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ url('reports') }}">{{ __('Reports') }}</a>
+                <!-- <a class="nav-link" href="{{ route('reports.index') }}">{{ __('Reports') }}</a> -->
             </li>
             <li class="nav-item {{ Request::is('settings') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ url('settings') }}">{{ __('Settings') }}</a>
+                <!-- <a class="nav-link" href="{{ url('') }}">{{ __('Settings') }}</a> -->
             </li>
         </ul>
         <ul class="navbar-nav mr-right">
@@ -43,7 +43,7 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ url('') }}">{{ __('Profile') }}</a>
                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"> {{ __('Logout') }}</a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"> @csrf </form>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"> @csrf </form>
                 </div>
             </li>
         </ul>

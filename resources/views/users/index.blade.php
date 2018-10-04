@@ -15,7 +15,7 @@
 	<table class="table table-striped table-sm">
 		<thead>
 			<tr>
-				<th><div class="form-check-inline mr-auto"><label class="form-check-label"><input class="form-check-input" value="" type="checkbox"></label></div></th>
+				<th><div class="form-check-inline mr-auto"><label class="form-check-label"><input class="form-check-input select-all" value="" type="checkbox"></label></div></th>
 				<th>Name</th>
 				<th>Email</th>
 				<th>Status</th>

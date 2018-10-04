@@ -4,11 +4,10 @@
   <h1 class="h2">Questions</h1>
   <div class="btn-toolbar mb-2 mb-md-0">
     <div class="btn-group mr-2">
-      <button class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="add a new user" type="submit" onclick="location.href = '/register';"> <i class="fas fa-plus"></i> </button>
-      <button class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="toggle activation status" type="submit" onclick="location.href = '/user/toggleStatus';"> <i class="fas fa-sync-alt"></i> </button>
-			<button class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="activate selected users" type="submit" onclick="location.href = '/user/toggleStatus?active';"> <i class="fas fa-unlock"></i> </button>
-      <button class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="reset password automatically" type="submit" onclick="location.href = '/user/resetPasswords';"> <i class="fas fa-key"></i> </button>
-    </div>
+      <button class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="add a new question" type="submit" onclick="#"> <i class="fas fa-plus"></i> </button>
+      <button class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="toggle mock status" type="submit" onclick="#"> <i class="fas fa-sync-alt"></i> </button>
+      <button class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="data exchange" type="submit" onclick="#"> <i class="fas fa-exchange-alt"></i> </button>
+      </div>
   </div>
 </div>
 <div class="table-responsive mt-1">
@@ -18,8 +17,8 @@
 				<th><div class="form-check-inline mr-auto"><label class="form-check-label"><input class="form-check-input" value="" type="checkbox"></label></div></th>
 				<th>ID</th>
 				<th>Question</th>
-				<th>Answer</th>
-				<!-- <th>Role</th> -->
+				<th>Mock</th>
+				<th>Topic</th>
 				<th>Actions</th>
 			</tr>
 		</thead>
@@ -28,14 +27,12 @@
 			<tr>
 				<td><div class="form-check-inline mr-auto"><label class="form-check-label"><input class="form-check-input" value="" type="checkbox" id="{{ $question->id }}"></label></div></td>
         <td>{{ $question->id }}</td>
-        <td>{{ $question->text }}</td>
-				<td>{{ $question->answer }}</td>
-				<td>@if($question->mock) Enabled @else Disabled @endif</td>
+        <td>{{ $question->question_text }}</td>
+				<td>@if($question->for_mock) Enabled @else Disabled @endif</td>
+        <td>{{ $question->topic->name or ""}}</td>
 				<td>
-          <a class="" href="/question/{{$question->id}}"><i class="fas fa-user-edit"></a></i>
-          <a class="" href="/question/{{$question->id}}"><i class="fas fa-sync-alt"></a></i>
-          <a class="" href="/question/{{$question->id}}"><i class="fas fa-unlock"></a></i>
-          <a class="" href="/question/{{$question->id}}"><i class="fas fa-key"></a></i>
+          <a class="" href="{{ route('questions.edit',$question->id) }}"><i class="fas fa-edit"></a></i>
+          <a class="" href="{{ route('questions.toggle',$question->id) }}"><i class="fas fa-sync-alt"></a></i>
         </td>
 			</tr>
 			@endforeach

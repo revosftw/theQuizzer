@@ -22,7 +22,7 @@ class CreateOptionsTable extends Migration
             $table->integer('question_id')->unsigned();
 
             $table->increments('id');
-            $table->string('text');
+            $table->string('option_text');
             $table->boolean('isAnswer')->deafult(false);
             $table->timestamps();
         });
