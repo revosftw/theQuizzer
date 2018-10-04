@@ -2,94 +2,138 @@
 
 namespace App\Http\Controllers;
 
+use App\Question;
+use App\Topic;
+use App\Option;
 use Illuminate\Http\Request;
-
-use App\question;
 
 class QuestionController extends Controller
 {
-  /**
-   * Create a new controller instance.
-   *
-   * @return void
-   */
-  public function __construct()
-  {
-      //$this->middleware('auth');
-  }
+    /**
+    * Create a new controller instance.
+    *
+    * @return void
+    */
+    public function __construct()
+    {
+        // $this->middleware('auth');
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+        $questions = Question::with('topic')->get();
+        return view('questions.index',compact('questions'));
+    }
 
-  /**
-   * Show the application dashboard.
-   *
-   *
-   * @return view
-   */
-  public function index(){
-      $questions = Question::all();
-      return view('questions.index',compact('questions'));
-  }
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+        $relations = [
+          'topics' => Topic::all(),
+        ];
 
-  /**
-   * Update the specified question in storage.
-   *
-   * @param int $id
-   * @return Response
-   */
-  public function create(){
-    $question = new question();
+        return view('questions.create', $relations);
+    }
 
-    $this->validate(request(), [
-      'text' => 'required'
-    ]);
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+        $question = new Question();
 
-    $question->text = Input::get('text');
-    $question->save();
-    return Redirect::to()->route('questions');
-  }
+        $request->validate([
+          'question_text' => 'required'
+        ]);
 
-  /**
-   * Show the form for editing the specified question.
-   *
-   * @param int $id
-   * @return \Illuminate\Http\Response
-   */
-  public function edit($id){
-    $question = Question::findOrFail($id);
-    return view('questions.index',compact('question'));
-  }
+        $question->save(request()->all());
+        return redirect()->route('questions');
+    }
 
-  /**
-   * Update the specified question in storage.
-   *
-   * @param int $id
-   * @return Response
-   */
-  public function update($id){
-    $question = Question::findOrFail($id);
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Question  $question
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Question $question)
+    {
+        //
+    }
 
-    $this->validate(request(), [
-      'text' => 'required'
-    ]);
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Question  $question
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Question $question)
+    {
+        //
+        $relations = [
+        'topics' => Topic::all(),
+        ];
+        $question = Question::with('topic')->with('options')->findOrFail($question->id);
+        
+        return view('questions.edit', compact('question') + $relations);
+    }
 
-    $question->text = Input::get('text');
-    $question->save();
-    return Redirect::to()->route('questions');
-  }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Question  $question
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Question $question)
+    {
+        //
+        $question = Question::findOrFail($question->id);
 
-  /**
-   * Update the specified question in storage.
-   *
-   * @param int $id
-   * @return Response
-   */
-   public function toggle($id){
-     $question = Question::findOrFail($id);
-     if($question->mock==false){
-       $question->mock = true;
-     }
-     else{
-        $question->mock=false;
-      }
-      return Redirect::back();
-   }
+        $requestValidated = $request->validate([
+          'question_text' => 'required'
+        ]);
+
+        $topic = request()->topic;
+        $topic = Topic::findOrFail($topic);
+        $question->topic()->associate($topic);
+
+        $options = request()->option;
+        foreach ($options as $option){
+          $tmpOption = Option::findOrFail($option['id']);
+          $tmpOption->isAnswer=isset($option['isAnswer'])?TRUE:FALSE;
+          $tmpOption->option_text = $option['option_text'];
+          $tmpOption->update();
+        }
+
+        $question->update(request()->all());
+        return redirect()->route('questions');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Question  $question
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Question $question)
+    {
+        //
+        Question::findOrFail($question->id)->delete();
+        return redirect('questions')->with('success', 'Information has been removed');
+    }
 }
