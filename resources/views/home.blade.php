@@ -30,7 +30,7 @@
           <li>{{ $countAdministrator }} administrators</li>
           <li>{{ $countUsers }} total users</li>
         </ul>
-        <button type="button" class="btn btn-lg btn-block btn-outline-primary">Manage Users</button>
+        <button type="button" class="btn btn-lg btn-block btn-outline-secondary" onclick="location.href='{{route('users.index')}}'">Manage Users</button>
       </div>
     </div>
 
@@ -39,14 +39,14 @@
         <h4 class="my-0 font-weight-normal"> <i class="fas fa-flag-checkered grey"></i> Mock Summary</h4>
       </div>
       <div class="card-body">
-        <h1 class="card-title"> 186 <small class="text-muted">mocks taken</small></h1>
+        <h1 class="card-title"> {{ $examsCount }} <small class="text-muted">mocks taken</small></h1>
         <ul class="list-unstyled mt-3 mb-4">
-          <li>Last mock was on 15-08-2018</li>
-          <li>Number of attendees</li>
-          <li>Average of the last mock</li>
-          <li>Upcoming mock is on 22-08-2018</li>
+          <li>Last mock was on {{ $lastExamDate }}</li>
+          <li>Attendance was {{ $lastExamAttendance }}</li>
+          <li>Average of the last mock was {{ $lastExamAverage }}</li>
+          <li>Upcoming mock is on {{ $nextExamDate }}</li>
         </ul>
-        <button type="button" class="btn btn-lg btn-block btn-outline-primary">Manage Mocks</button>
+        <button type="button" class="btn btn-lg btn-block btn-outline-secondary">Manage Mocks</button>
       </div>
     </div>
 
@@ -55,14 +55,14 @@
         <h4 class="my-0 font-weight-normal"> <i class="fas fa-question-circle grey"></i> Question Summary</h4>
       </div>
       <div class="card-body">
-        <h1 class="card-title">1128 <small class="text-muted">questions</small></h1>
+        <h1 class="card-title">{{ $questionsCount }} <small class="text-muted">questions</small></h1>
         <ul class="list-unstyled mt-3 mb-4">
-          <li>785 practice questions</li>
-          <li>200 common pool questions</li>
-          <li>114 exclusive mock questions</li>
-          <li>13 questions added last week</li>
+          <li>{{ $questionsCount }} practice questions</li>
+          <li>{{ $practiceQuestionsCount}} common pool questions</li>
+          <li>{{ $mockQuestionsCount }} exclusive mock questions</li>
+          <li>{{ $recentQuestionsCount }} questions added last week</li>
         </ul>
-        <button type="button" class="btn btn-lg btn-block btn-outline-primary">Manage Questions</button>
+        <button type="button" class="btn btn-lg btn-block btn-outline-secondary" onclick="location.href='{{route('questions.index')}}'">Manage Questions</button>
       </div>
     </div>
 
@@ -82,7 +82,7 @@
           <li>{{ $countAdministrator }} administrators</li>
           <li>{{ $countUsers }} total users</li>
         </ul>
-        <button type="button" class="btn btn-lg btn-block btn-outline-primary">Manage Users</button>
+        <button type="button" class="btn btn-lg btn-block btn-outline-secondary" onclick="location.href='{{route('users.index')}}'">Manage Users</button>
       </div>
     </div>
 
@@ -91,14 +91,14 @@
         <h4 class="my-0 font-weight-normal"> <i class="fas fa-flag-checkered grey"></i> Mock Summary</h4>
       </div>
       <div class="card-body">
-        <h1 class="card-title"> 186 <small class="text-muted">mocks taken</small></h1>
+        <h1 class="card-title"> {{ $examsCount }} <small class="text-muted">mocks taken</small></h1>
         <ul class="list-unstyled mt-3 mb-4">
-          <li>Last mock was on 15-08-2018</li>
-          <li>Number of attendees</li>
-          <li>Average of the last mock</li>
-          <li>Upcoming mock is on 22-08-2018</li>
+          <li>Last mock was on {{ $lastExamDate }}</li>
+          <li>Attendance was {{ $lastExamAttendance }}</li>
+          <li>Average of the last mock was {{ $lastExamAverage }}</li>
+          <li>Upcoming mock is on {{ $nextExamDate }}</li>
         </ul>
-        <button type="button" class="btn btn-lg btn-block btn-outline-primary">Manage Mocks</button>
+        <button type="button" class="btn btn-lg btn-block btn-outline-secondary">Manage Mocks</button>
       </div>
     </div>
 
@@ -107,14 +107,14 @@
         <h4 class="my-0 font-weight-normal"> <i class="fas fa-question-circle grey"></i> Question Summary</h4>
       </div>
       <div class="card-body">
-        <h1 class="card-title">1128 <small class="text-muted">questions</small></h1>
+        <h1 class="card-title">{{ $questionsCount }} <small class="text-muted">questions</small></h1>
         <ul class="list-unstyled mt-3 mb-4">
-          <li>785 practice questions</li>
-          <li>200 common pool questions</li>
-          <li>114 exclusive mock questions</li>
-          <li>13 questions added last week</li>
+          <li>{{ $questionsCount }} practice questions</li>
+          <li>{{ $practiceQuestionsCount}} common pool questions</li>
+          <li>{{ $mockQuestionsCount }} exclusive mock questions</li>
+          <li>{{ $recentQuestionsCount }} questions added last week</li>
         </ul>
-        <button type="button" class="btn btn-lg btn-block btn-outline-primary">Manage Questions</button>
+        <button type="button" class="btn btn-lg btn-block btn-outline-secondary" onclick="location.href='{{route('questions.index')}}'">Manage Questions</button>
       </div>
     </div>
 
@@ -134,7 +134,7 @@
           <li>{{ $countAdministrator }} administrators</li>
           <li>{{ $countUsers }} total users</li>
         </ul>
-        <button type="button" class="btn btn-lg btn-block btn-outline-primary">Manage Users</button>
+        <button type="button" class="btn btn-lg btn-block btn-outline-secondary" onclick="location.href='{{route('users.index')}}'">Manage Users</button>
       </div>
     </div>
 
@@ -143,14 +143,14 @@
         <h4 class="my-0 font-weight-normal"> <i class="fas fa-flag-checkered grey"></i> Mock Summary</h4>
       </div>
       <div class="card-body">
-        <h1 class="card-title"> 186 <small class="text-muted">mocks taken</small></h1>
+        <h1 class="card-title"> {{ $examsCount }} <small class="text-muted">mocks taken</small></h1>
         <ul class="list-unstyled mt-3 mb-4">
-          <li>Last mock was on 15-08-2018</li>
-          <li>Number of attendees</li>
-          <li>Average of the last mock</li>
-          <li>Upcoming mock is on 22-08-2018</li>
+          <li>Last mock was on {{ $lastExamDate }}</li>
+          <li>Attendance was {{ $lastExamAttendance }}</li>
+          <li>Average of the last mock was {{ $lastExamAverage }}</li>
+          <li>Upcoming mock is on {{ $nextExamDate }}</li>
         </ul>
-        <button type="button" class="btn btn-lg btn-block btn-outline-primary">Manage Mocks</button>
+        <button type="button" class="btn btn-lg btn-block btn-outline-secondary">Manage Mocks</button>
       </div>
     </div>
 
@@ -159,14 +159,14 @@
         <h4 class="my-0 font-weight-normal"> <i class="fas fa-question-circle grey"></i> Question Summary</h4>
       </div>
       <div class="card-body">
-        <h1 class="card-title">1128 <small class="text-muted">questions</small></h1>
+        <h1 class="card-title">{{ $questionsCount }} <small class="text-muted">questions</small></h1>
         <ul class="list-unstyled mt-3 mb-4">
-          <li>785 practice questions</li>
-          <li>200 common pool questions</li>
-          <li>114 exclusive mock questions</li>
-          <li>13 questions added last week</li>
+          <li>{{ $questionsCount }} practice questions</li>
+          <li>{{ $practiceQuestionsCount}} common pool questions</li>
+          <li>{{ $mockQuestionsCount }} exclusive mock questions</li>
+          <li>{{ $recentQuestionsCount }} questions added last week</li>
         </ul>
-        <button type="button" class="btn btn-lg btn-block btn-outline-primary">Manage Questions</button>
+        <button type="button" class="btn btn-lg btn-block btn-outline-secondary" onclick="location.href='{{route('questions.index')}}'">Manage Questions</button>
       </div>
     </div>
 
