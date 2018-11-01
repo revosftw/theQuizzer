@@ -33,13 +33,8 @@
         <ul class="navbar-nav mr-right">
             <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    @auth
-                    {{ Auth::user()->name }} <span class="badge badge-pill bg align-text-bottom">27</span><span class="caret"></span>
-                    @else
-                    Guest <span class="badge badge-pill bg align-text-bottom">27</span><span class="caret"></span>
-                    @endauth
+                    {{ Auth::user()->name }}
                 </a>
-
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ url('') }}">{{ __('Profile') }}</a>
                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"> {{ __('Logout') }}</a>
