@@ -56,12 +56,31 @@ class QuestionController extends Controller
         //
         $question = new Question();
 
-        $request->validate([
+        $requestValidated = $request->validate([
           'question_text' => 'required'
         ]);
 
-        $question->save(request()->all());
-        return redirect()->route('questions');
+        $question->question_text = request()->question_text;
+        $question->answer_explanation = request()->answer_explanation;
+        $question->save();
+
+        $arrOptions = array();
+        $options = request()->option;
+        foreach ($options as $option){
+          $tmpOption = new Option();
+          $tmpOption->isAnswer=isset($option['isAnswer'])?TRUE:FALSE;
+          $tmpOption->option_text = $option['option_text'];
+          array_push($arrOptions, $tmpOption);
+        }
+
+        $question->options()->saveMany($arrOptions);
+
+        $topic = request()->topic;
+        $topic = Topic::findOrFail($topic);
+        $question->topic()->associate($topic);
+        $question->save();
+
+        return redirect()->route('questions.index');
     }
 
     /**
@@ -88,7 +107,7 @@ class QuestionController extends Controller
         'topics' => Topic::all(),
         ];
         $question = Question::with('topic')->with('options')->findOrFail($question->id);
-        
+
         return view('questions.edit', compact('question') + $relations);
     }
 
@@ -121,7 +140,7 @@ class QuestionController extends Controller
         }
 
         $question->update(request()->all());
-        return redirect()->route('questions');
+        return redirect()->route('questions.index');
     }
 
     /**
@@ -134,6 +153,6 @@ class QuestionController extends Controller
     {
         //
         Question::findOrFail($question->id)->delete();
-        return redirect('questions')->with('success', 'Information has been removed');
+        return redirect()->route('questions.index')->with('success', 'Information has been removed');
     }
 }
