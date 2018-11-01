@@ -64,7 +64,7 @@
     @endfor
 
     <div class="form-group row">
-      <label for="text" class="col-md-4 col-form-label text-md-right">{{ __('Explaination') }}</label>
+      <label for="text" class="col-md-4 col-form-label text-md-right">{{ __('Explanation') }}</label>
 
       <div class="col-md-6">
         <textarea id="answer_explanation" cols="50" rows="10" class="form-control{{ $errors->has('answer_explanation') ? ' is-invalid' : '' }}" name="answer_explanation" autofocus></textarea>
