@@ -20,7 +20,7 @@
 				<th>Email</th>
 				<th>Status</th>
 				<th>Role</th>
-				<th>Actions</th>
+				<th class="text-center">Actions</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -30,8 +30,8 @@
 				<td>{{ $user->name }}</td>
 				<td>{{ $user->email }}</td>
 				<td>@if($user->active) Enabled @else Disabled @endif</td>
-				<td>{{ $user->roles->first()->name or "" }}</td>
-				<td>
+				<td class="text-justify"> {{ $user->roles->first()->name or "" }} </td>
+				<td class="text-center">
           <a class="" href="{{ route('users.toggle',$user->id) }}">@if($user->active)<i class="fas fa-check-circle text-success"></i>@else<i class="fas fa-times-circle text-danger"></i>@endif</a>
           <a class="" href="{{ route('users.edit',$user->id) }}"><i class="fas fa-user-circle text-secondary"></i></a>
           <a class="" href="{{ route('users.reset',$user->id) }}"><i class="fas fa-redo text-secondary"></i></a>
@@ -40,5 +40,6 @@
 			@endforeach
 		</tbody>
 	</table>
+    {{ $users->links() }}
 </div>
 @endsection

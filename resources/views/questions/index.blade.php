@@ -15,30 +15,31 @@
 		<thead>
 			<tr>
 				<th><div class="form-check-inline mr-auto"><label class="form-check-label"><input class="form-check-input" value="" type="checkbox"></label></div></th>
-				<th>ID</th>
-				<th>Question</th>
-				<th>Mock</th>
-				<th>Topic</th>
-				<th>Actions</th>
+				<th class="text-center">ID</th>
+				<th class="text-justify">Question</th>
+				<th class="text-center">Mock</th>
+				<th class="text-center">Topic</th>
+				<th class="text-center" >Actions</th>
 			</tr>
 		</thead>
 		<tbody>
 			@foreach($questions as $question)
 			<tr>
 				<td><div class="form-check-inline mr-auto"><label class="form-check-label"><input class="form-check-input" value="" type="checkbox" id="{{ $question->id }}"></label></div></td>
-        <td>{{ $question->id }}</td>
-        <td>{{ $question->question_text }}</td>
-				<td>@if($question->for_mock) Enabled @else Disabled @endif</td>
-        <td>{{ $question->topic->name or ""}}</td>
-				<td>
-          <a class="" href="{{ route('questions.edit',$question->id) }}"><i class="fas fa-edit"></a></i>
-          <a class="" href="{{ route('questions.toggle',$question->id) }}"><i class="fas fa-sync-alt"></a></i>
+        <td class="text-center">{{ $question->id }}</td>
+        <td class="text-justify">{{ $question->question_text }}</td>
+				<td class="text-center">@if($question->for_mock) Enabled @else Disabled @endif</td>
+        <td class="text-center">{{ $question->topic->name or ""}}</td>
+				<td class="text-center">
+          <a class="" href="{{ route('questions.edit', $question) }}"><i class="fab fa-creative-commons-nd text-secondary"></a></i>
+          <!-- <a class="" href="{{ route('questions.toggle', $question) }}"><i class="fas fa-sync-alt"></a></i> -->
           <a class="" href="{{ route('questions.destroy', $question) }}" onClick="event.preventDefault();document.getElementById('questions.destroy.{{ $question }}').submit();"><i class="fas fa-minus-circle text-secondary"></a></i>
           <form id="questions.destroy.{{ $question }}" class="d-none" action="{{ route('questions.destroy', $question) }}" method="post"> @csrf @method('DELETE') </form>
         </td>
 			</tr>
 			@endforeach
 		</tbody>
+    {{ $questions->links() }}
 	</table>
 </div>
 @endsection
