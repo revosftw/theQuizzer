@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
     <!-- <img class="mb-4" src="{{asset('img/bootstrap-solid.png')}}" alt="" width="40" height="40"> -->
-    <a class="navbar-brand mr-auto mr-lg-0" href="#">
-        <img src="{{asset('img/bootstrap-solid.png')}}" width="30" height="30" class="d-inline-block align-top" style="margin-right: 1em; color: white;" alt="">{{ config('app.name', 'Laravel') }}
+    <a class="navbar-brand mr-auto mr-lg-0" href="">
+        <i class="fas fa-question-circle mr-1"></i>{{ config('app.name', 'Laravel') }}
     </a>
     <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas-collapse" data-target="#navbar">
         <span class="navbar-toggler-icon"></span>
