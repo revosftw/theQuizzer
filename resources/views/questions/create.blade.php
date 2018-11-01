@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="mt-2 mr-auto">
-  <form method="POST" action="{{ route('questions.create') }}" aria-label="{{ __('Create') }}">
+  <form method="POST" action="{{ route('questions.store') }}" aria-label="{{ __('Create') }}">
     @csrf
 
     <div class="form-group row">
@@ -25,7 +25,7 @@
       <div class="col-md-6">
         <select class="custom-select form-control{{ $errors->has('topic') ? ' is-invalid' : '' }}" name="topic" required autofocus>
           @foreach($topics as $topic)
-          <option value="{{ $topic->id }}" {{ (isset($question->topic->id))? ($topic->id) == ($question->topic->id)? 'selected' : '' : '' }}>{{ $topic->name }}</option>
+          <option value="{{ $topic->id }}">{{ $topic->name }}</option>
           @endforeach
         </select>
         @if ($errors->has('question_text'))
@@ -57,7 +57,7 @@
       </div>
 
       <div class="form-check-inline">
-        <label class="form-check-label"><input class="form-check-input" name="option[{{ $items }}][isAnswer]" type="checkbox"  {{ ($option->isAnswer) ? 'checked':'' }}></label>
+        <label class="form-check-label"><input class="form-check-input" name="option[{{ $items }}][isAnswer]" type="checkbox"></label>
       </div>
 
     </div>
