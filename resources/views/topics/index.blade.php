@@ -29,13 +29,10 @@
         <td><div class="form-check-inline mr-auto"><label class="form-check-label"><input class="form-check-input" value="" type="checkbox" name="{{ $topic->id }}"></label></div></td>
         <td>{{ $topic->name }}</td>
         <td>{{ $topic->description }}</td>
-        <td>
-          <form class="form-inline mb-0" action="{{ route('topics.destroy',$topic) }}" method="post">
-            @csrf
-            <a class="btn btn-primary mr-1" href="{{ route('topics.edit',$topic) }}"><i class="fas fa-pen"></i></a>
-            <input name="_method" type="hidden" value="DELETE">
-            <button class="btn btn-danger" type="submit"><i class="fas fa-trash-alt"></i></button>
-          </form>
+        <td class="text-center">
+          <a class="" href="{{ route('topics.edit',$topic) }}"><i class="fab fa-creative-commons-nd"></i></a>
+          <a class="" href="{{ route('topics.destroy',$topic) }}" onClick="event.preventDefault();document.getElementById('topics.destroy.{{ $topic }}').submit();"><i class="fas fa-times-circle"></a></i>
+          <form id="topics.destroy.{{ $topic }}" class="d-none" action="{{ route('topics.destroy',$topic) }}" method="post"> @csrf @method('delete') </form>
         </td>
       </tr>
       @endforeach

@@ -4,7 +4,7 @@
   <h1 class="h2">Questions</h1>
   <div class="btn-toolbar mb-2 mb-md-0">
     <div class="btn-group mr-2">
-      <button class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="add a new question" type="submit" onclick="#"> <i class="fas fa-plus"></i> </button>
+      <button class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="add a new question" type="submit" onclick="location.href='{{ route('questions.create') }}'"> <i class="fas fa-plus"></i> </button>
       <button class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="toggle mock status" type="submit" onclick="#"> <i class="fas fa-sync-alt"></i> </button>
       <button class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="data exchange" type="submit" onclick="#"> <i class="fas fa-exchange-alt"></i> </button>
       </div>
@@ -33,6 +33,8 @@
 				<td>
           <a class="" href="{{ route('questions.edit',$question->id) }}"><i class="fas fa-edit"></a></i>
           <a class="" href="{{ route('questions.toggle',$question->id) }}"><i class="fas fa-sync-alt"></a></i>
+          <a class="" href="{{ route('questions.destroy', $question) }}" onClick="event.preventDefault();document.getElementById('questions.destroy.{{ $question }}').submit();"><i class="fas fa-minus-circle text-secondary"></a></i>
+          <form id="questions.destroy.{{ $question }}" class="d-none" action="{{ route('questions.destroy', $question) }}" method="post"> @csrf @method('DELETE') </form>
         </td>
 			</tr>
 			@endforeach

@@ -32,10 +32,9 @@
 				<td>@if($user->active) Enabled @else Disabled @endif</td>
 				<td>{{ $user->roles->first()->name or "" }}</td>
 				<td>
-          <a class="" href="{{ route('users.edit',$user->id) }}"><i class="fas fa-user-edit"></a></i>
-          <a class="" href="{{ route('users.activate',$user->id) }}"><i class="fas fa-sync-alt"></a></i>
-          <a class="" href="{{ route('users.reset',$user->id) }}"><i class="fas fa-unlock"></a></i>
-          <a class="" href="{{ route('users.reset',$user->id) }}"><i class="fas fa-key"></a></i>
+          <a class="" href="{{ route('users.toggle',$user->id) }}">@if($user->active)<i class="fas fa-check-circle text-success"></i>@else<i class="fas fa-times-circle text-danger"></i>@endif</a>
+          <a class="" href="{{ route('users.edit',$user->id) }}"><i class="fas fa-user-circle text-secondary"></i></a>
+          <a class="" href="{{ route('users.reset',$user->id) }}"><i class="fas fa-redo text-secondary"></i></a>
         </td>
 			</tr>
 			@endforeach
