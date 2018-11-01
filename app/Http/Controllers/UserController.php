@@ -23,15 +23,29 @@ class UserController extends Controller
   }
 
   /**
+   * Display a listing of the resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function index(){
+    // $users = DB::table('users')->get();
+    // $users = User::with('roles')->get();
+    $users = User::with('roles')->paginate(15);
+    return view('users.index',compact('users'));
+  }
+
+  /**
   * Show the application dashboard.
   *
   * @return view
   */
   public function show(){
-    //$users = DB::table('users')->get();
-    //$users = User::all();
-    $users = User::with('roles')->get();
-    return view('users.index',compact('users'));
+    $relations = [
+    'roles' => Role::all(),
+    ];
+
+    $user = User::findOrFail($id);
+    return view('users.show',compact('user') + $relations);
   }
 
   /**
@@ -41,9 +55,13 @@ class UserController extends Controller
   * @return \Illuminate\Http\Response
   */
   public function edit($id){
+    $relations = [
+    'roles' => Role::all(),
+    ];
+
     $user = User::findOrFail($id);
     //$user =  Auth::user();
-    return view('users.edit',compact('user'));
+    return view('users.edit',compact('user') + $relations);
   }
 
   /**
@@ -68,7 +86,7 @@ class UserController extends Controller
     $user->password = bcrypt(Request::input('password'));
     $user->update();
     // Flash::message('Your account has been updated!');
-    return redirect()->route('users')->with('success_msg','Your account has been updated!');
+    return redirect()->route('users.index')->with('success_msg','Your account has been updated!');
   }
 
   /**
@@ -77,16 +95,11 @@ class UserController extends Controller
   * @param  int  $id
   * @return Response
   */
-  public function activate($id){
+  public function toggle($id){
     $user = User::findOrFail($id);
-    if($user->active == true){
-      $user->active = false;
-    }
-    else {
-      $user->active = true;
-    }
+    $user->active = !($user->active);
     $user->save();
-    return redirect()->route('users');
+    return redirect()->route('users.index');
   }
 
   /**
@@ -99,6 +112,6 @@ class UserController extends Controller
     $user = User::findOrFail($id);
     $user->password = bcrypt('batman');
     $user->save();
-    return redirect()->route('users');
+    return redirect()->route('users.index');
   }
 }
