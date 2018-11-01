@@ -9,11 +9,11 @@
 
     <div id="navbar" class="navbar-collapse collapse">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ url('/') }}">{{ __('Dashboard') }}</a>
+            <li class="nav-item {{ Request::is('/') || Request::is('home') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ url('home') }}">{{ __('Dashboard') }}</a>
             </li>
             <li class="nav-item {{ Request::is('users') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('users') }}">{{ __('Users') }}</a>
+                <a class="nav-link" href="{{ route('users.index') }}">{{ __('Users') }}</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="{{ url('labs') }}" id="labs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ __('QuesLab') }}</a>
