@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+// use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Question
@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 */
 class Question extends Model
 {
-  use SoftDeletes;
+  // use SoftDeletes;
 
   protected $fillable = ['question_text','answer_explanation','for_mock','topic_id'];
 
@@ -44,5 +44,11 @@ class Question extends Model
      */
      public function topic(){
        return $this->belongsTo(Topic::class);
+     }
+
+     public function delete(){
+       $this->options()->delete();
+       $this->topic()->dissociate();
+       parent::delete();
      }
 }
