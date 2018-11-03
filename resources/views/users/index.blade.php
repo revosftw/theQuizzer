@@ -4,10 +4,10 @@
   <h1 class="h2">Users</h1>
   <div class="btn-toolbar mb-2 mb-md-0">
     <div class="btn-group mr-2">
-      <button class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="add a new user" type="submit" onclick="location.href = '/register';"> <i class="fas fa-plus"></i> </button>
-      <button class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="toggle activation status" type="submit" onclick="location.href = '/user/toggleStatus';"> <i class="fas fa-sync-alt"></i> </button>
-			<button class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="activate selected users" type="submit" onclick="location.href = '/user/toggleStatus?active';"> <i class="fas fa-unlock"></i> </button>
-      <button class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="reset password automatically" type="submit" onclick="location.href = '/user/resetPasswords';"> <i class="fas fa-key"></i> </button>
+      <a class="btn btn-sm btn-outline-secondary" href="{{ route('register') }}" data-toggle="tooltip" data-placement="top" title="add a new user"> <i class="fas fa-plus-circle"></i> </a>
+      <a class="btn btn-sm btn-outline-secondary" href="{{ route('users.toggle') }}" data-toggle="tooltip" data-placement="top" title="toggle activation status" > <i class="fas fa-exclamation-circle"></i> </a>
+			<a class="btn btn-sm btn-outline-secondary" href="{{ route('users.toggle') }}" data-toggle="tooltip" data-placement="top" title="activate selected users"> <i class="fas fa-power-off"></i> </a>
+      <a class="btn btn-sm btn-outline-secondary" href="{{ route('users.reset') }}" data-toggle="tooltip" data-placement="top" title="reset password automatically"> <i class="fab fa-keycdn"></i> </a>
     </div>
   </div>
 </div>

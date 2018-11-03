@@ -4,9 +4,10 @@
   <h1 class="h2">Questions</h1>
   <div class="btn-toolbar mb-2 mb-md-0">
     <div class="btn-group mr-2">
-      <button class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="add a new question" type="submit" onclick="location.href='{{ route('questions.create') }}'"> <i class="fas fa-plus"></i> </button>
-      <button class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="toggle mock status" type="submit" onclick="#"> <i class="fas fa-sync-alt"></i> </button>
-      <button class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="data exchange" type="submit" onclick="#"> <i class="fas fa-exchange-alt"></i> </button>
+      <a class="btn btn-sm btn-outline-secondary" href="{{ route('questions.create') }}" data-toggle="tooltip" data-placement="top" title="add a new question" > <i class="fas fa-plus-circle"></i> </a>
+      <a class="btn btn-sm btn-outline-secondary" href="{{ route('questions.create') }}" data-toggle="tooltip" data-placement="top" title="toggle mock status" > <i class="fas fa-exclamation-circle"></i> </a>
+      <a class="btn btn-sm btn-outline-secondary" href="{{ route('questions.create') }}" data-toggle="tooltip" data-placement="top" title="upload data" > <i class="fas fa-chevron-circle-up"></i> </a>
+      <a class="btn btn-sm btn-outline-secondary" href="{{ route('questions.create') }}" data-toggle="tooltip" data-placement="top" title="download data" > <i class="fas fa-chevron-circle-down"></i> </a>
       </div>
   </div>
 </div>
