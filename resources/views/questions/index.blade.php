@@ -33,7 +33,7 @@
 				<td class="text-center">
           <a class="" href="{{ route('questions.edit', $question) }}"><i class="fab fa-creative-commons-nd text-secondary"></a></i>
           <!-- <a class="" href="{{ route('questions.toggle', $question) }}"><i class="fas fa-sync-alt"></a></i> -->
-          <a class="" href="{{ route('questions.destroy', $question) }}" onClick="event.preventDefault();document.getElementById('questions.destroy.{{ $question }}').submit();"><i class="fas fa-minus-circle text-secondary"></a></i>
+          <a class="" href="{{ route('questions.destroy', $question) }}" onClick="event.preventDefault();document.getElementById('questions.destroy.{{ $question }}').submit();"><i class="fas fa-times-circle text-secondary"></a></i>
           <form id="questions.destroy.{{ $question }}" class="d-none" action="{{ route('questions.destroy', $question) }}" method="post"> @csrf @method('DELETE') </form>
         </td>
 			</tr>
