@@ -116,4 +116,25 @@ class TopicController extends Controller
 
         return redirect('topics')->with('success', 'Information has been removed');
     }
+
+    /**
+     * Store many newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function upload(Request $request)
+    {
+        $requestValidated = $request->validate([
+            'name' => 'required|unique:topics',
+        ]);
+
+        $topic = new Topic();
+
+        $topic->name = $request->name;
+        $topic->description = $request->description;
+
+        $topic->save();
+        return redirect()->route('topics.index');
+    }
 }
