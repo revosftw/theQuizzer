@@ -26,7 +26,7 @@ class QuestionController extends Controller
     public function index()
     {
         //
-        $questions = Question::with('topic')->get();
+        $questions = Question::with('topic')->paginate(config('app.items_per_page',15));;
         return view('questions.index',compact('questions'));
     }
 

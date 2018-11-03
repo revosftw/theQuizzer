@@ -15,7 +15,7 @@ class TopicController extends Controller
     public function index()
     {
         //
-        $topics = Topic::all();
+        $topics = Topic::paginate(config('app.items_per_page',15));
         return view('topics.index',compact('topics'));
     }
 

@@ -30,7 +30,7 @@ class UserController extends Controller
   public function index(){
     // $users = DB::table('users')->get();
     // $users = User::with('roles')->get();
-    $users = User::with('roles')->paginate(15);
+    $users = User::with('roles')->paginate(config('app.items_per_page',15));;
     return view('users.index',compact('users'));
   }
 
