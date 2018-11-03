@@ -25,7 +25,6 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        //
         $questions = Question::with('topic')->paginate(config('app.items_per_page',15));;
         return view('questions.index',compact('questions'));
     }
@@ -37,7 +36,6 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        //
         $relations = [
           'topics' => Topic::all(),
         ];
@@ -53,7 +51,6 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $question = new Question();
 
         $requestValidated = $request->validate([
@@ -91,7 +88,7 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
-        //
+
     }
 
     /**
@@ -102,7 +99,6 @@ class QuestionController extends Controller
      */
     public function edit(Question $question)
     {
-        //
         $relations = [
         'topics' => Topic::all(),
         ];
@@ -120,7 +116,6 @@ class QuestionController extends Controller
      */
     public function update(Request $request, Question $question)
     {
-        //
         $question = Question::findOrFail($question->id);
 
         $requestValidated = $request->validate([
@@ -151,7 +146,6 @@ class QuestionController extends Controller
      */
     public function destroy(Question $question)
     {
-        //
         Question::findOrFail($question->id)->delete();
         return redirect()->route('questions.index')->with('success', 'Information has been removed');
     }

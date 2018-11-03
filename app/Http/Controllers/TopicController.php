@@ -23,7 +23,6 @@ class TopicController extends Controller
      */
     public function index()
     {
-        //
         $topics = Topic::paginate(config('app.items_per_page',15));
         return view('topics.index',compact('topics'));
     }
@@ -35,7 +34,6 @@ class TopicController extends Controller
      */
     public function create()
     {
-        //
         return view('topics.create');
     }
 
@@ -47,7 +45,6 @@ class TopicController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $requestValidated = $request->validate([
             'name' => 'required|unique:topics',
         ]);
@@ -69,7 +66,6 @@ class TopicController extends Controller
      */
     public function show(Topic $topic)
     {
-        //
         $relations = [
         ];
 
@@ -86,8 +82,6 @@ class TopicController extends Controller
      */
     public function edit(Topic $topic)
     {
-        // dd($topic);
-        //
         $relations = [
         ];
 
@@ -105,7 +99,6 @@ class TopicController extends Controller
      */
     public function update(Request $request, Topic $topic)
     {
-        //
         $updateTopic = Topic::findOrFail($topic->id);
         $updateTopic->update($request->all());
         return redirect()->route('topics.index');
@@ -119,8 +112,6 @@ class TopicController extends Controller
      */
     public function destroy(Topic $topic)
     {
-        //
-        // dd($topic);
         Topic::findOrFail($topic->id)->delete();
 
         return redirect('topics')->with('success', 'Information has been removed');
