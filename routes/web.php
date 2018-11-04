@@ -21,6 +21,8 @@ Route::get('/phpinfo',function(){
     return ('<?php phpinfo(); ?>');
 });
 
+Route::get('/dataexchange',function(){return view('dataexchange');})->name('dataexchange');
+
 /*
     // Authentication Routes...
     $this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
