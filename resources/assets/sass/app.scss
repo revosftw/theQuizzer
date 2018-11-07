@@ -16,7 +16,11 @@
 }
 
 // fontawesome
-@import url("https://use.fontawesome.com/releases/v5.2.0/css/all.css");
+// @import url("https://use.fontawesome.com/releases/v5.2.0/css/all.css");
+@import '~@fortawesome/fontawesome-free/scss/brands';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
 // Custom CSS
 // @import 'offcanvas';
