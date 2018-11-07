@@ -7,6 +7,10 @@
 
 require('./bootstrap');
 
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
 $(".select-all").change(function() {
   $(".subCheckbox").prop("checked", this.checked);
 });
