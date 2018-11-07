@@ -5,7 +5,7 @@
   <div class="btn-toolbar mb-2 mb-md-0">
     <div class="btn-group mr-2">
       <a class="btn btn-sm btn-outline-secondary" href="{{ route('topics.create') }}" data-toggle="tooltip" data-placement="top" title="add a new category" > <i class="fas fa-plus-circle" ></i> </a>
-      <a class="btn btn-sm btn-outline-secondary" href="{{ route('topics.upload') }}" data-toggle="tooltip" data-placement="top" title="upload" > <i class="fas fa-chevron-circle-up" ></i> </a>
+      <a class="btn btn-sm btn-outline-secondary" href="{{ route('dataexchange') }}" data-toggle="tooltip" data-placement="top" title="upload" > <i class="fas fa-chevron-circle-up" ></i> </a>
       <a class="btn btn-sm btn-outline-secondary" href="{{ route('topics.create') }}" data-toggle="tooltip" data-placement="top" title="download" > <i class="fas fa-chevron-circle-down" ></i> </a>
     </div>
   </div>
