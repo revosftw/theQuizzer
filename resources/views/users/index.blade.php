@@ -5,9 +5,9 @@
   <div class="btn-toolbar mb-2 mb-md-0">
     <div class="btn-group mr-2">
       <a class="btn btn-sm btn-outline-secondary" href="{{ route('register') }}" data-toggle="tooltip" data-placement="top" title="add a new user"> <i class="fas fa-plus-circle"></i> </a>
-      <a class="btn btn-sm btn-outline-secondary" href="{{ route('users.toggle') }}" data-toggle="tooltip" data-placement="top" title="toggle activation status" > <i class="fas fa-exclamation-circle"></i> </a>
-			<a class="btn btn-sm btn-outline-secondary" href="{{ route('users.toggle') }}" data-toggle="tooltip" data-placement="top" title="activate selected users"> <i class="fas fa-power-off"></i> </a>
-      <a class="btn btn-sm btn-outline-secondary" href="{{ route('users.reset') }}" data-toggle="tooltip" data-placement="top" title="reset password automatically"> <i class="fab fa-keycdn"></i> </a>
+      <a class="btn btn-sm btn-outline-secondary" href="" data-toggle="tooltip" data-placement="top" title="toggle activation status" > <i class="fas fa-exclamation-circle"></i> </a>
+			<a class="btn btn-sm btn-outline-secondary" href="" data-toggle="tooltip" data-placement="top" title="activate selected users"> <i class="fas fa-power-off"></i> </a>
+      <a class="btn btn-sm btn-outline-secondary" href="" data-toggle="tooltip" data-placement="top" title="reset password automatically"> <i class="fab fa-keycdn"></i> </a>
     </div>
   </div>
 </div>
