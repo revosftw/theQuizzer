@@ -40,7 +40,7 @@
 			@endforeach
 		</tbody>
 	</table>
-  <div class="justify-content-center">
+  <div>
     {{ $users->links('layouts.partials._pagination') }}
   </div>
 </div>

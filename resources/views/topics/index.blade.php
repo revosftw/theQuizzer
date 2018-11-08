@@ -38,7 +38,7 @@
       </tr>
       @endforeach
     </tbody>
-    {{ $topics->links() }}
+    {{ $topics->links('layouts.partials._pagination') }}
   </table>
 </div>
 @endsection

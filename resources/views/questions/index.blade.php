@@ -40,7 +40,7 @@
 			</tr>
 			@endforeach
 		</tbody>
-    {{ $questions->links() }}
+    {{ $questions->links('layouts.partials._pagination') }}
 	</table>
 </div>
 @endsection
